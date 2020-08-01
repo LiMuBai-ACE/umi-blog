@@ -9,3 +9,7 @@ src->utils：工具文件
 src->utils->request:网络请求封装
 3.defaultSettings.js: 默认配置文件，baseUrl便放在这里
 
+```
+dva history报错
+https://blog.csdn.net/qq_36658051/article/details/104646994
+

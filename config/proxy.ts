@@ -6,14 +6,14 @@
  * https://pro.ant.design/docs/deploy
  */
 export default {
-  dev: {
+  development: {
     '/api/': {
       target: 'https://preview.pro.ant.design',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },
   },
-  pre: {
+  production: {
     '/api/': {
       target: 'your pre url',
       changeOrigin: true,

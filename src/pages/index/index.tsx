@@ -3,7 +3,7 @@ import {} from 'umi';
 import './index.scss';
 
 function Home() {
-  return <div className="page-home">home</div>;
+  return <div className="page-home">admin</div>;
 }
 
 export default Home;

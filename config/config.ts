@@ -1,14 +1,13 @@
 import { defineConfig } from 'umi';
 // import defaultSettings from './defaultSettings';
-// import routes from './router.config';
 import proxy from './proxy';
-const { REACT_APP_ENV } = process.env;
+const { NODE_ENV } = process.env;
+console.log(NODE_ENV);
 export default defineConfig({
-  publicPath: '/',
-  hash: true,   // 开启哈希模式 生产文件后缀名带有哈希值 避免浏览器缓存
-  history: { type: 'hash', },
-  // devtool: 'source-map',//生成map文件 devtool: 'eval',
-  devtool: false,
+  title: '这是个人网站首页',
+  favicon:
+    'https://immisso-upload.oss-cn-hangzhou.aliyuncs.com/20200517/rc-upload-1589714215963-2.png',
+
   antd: {
     dark: false,
   },
@@ -18,7 +17,7 @@ export default defineConfig({
     hmr: true, // 表示是否启用 dva model 的热更新
   },
   dynamicImport: {
-    loading: '@/components/loading',
+    // loading: '@/components/loading',
   },
   targets: {
     ie: 11,
@@ -26,16 +25,14 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  ...require('./router.config'),
-  theme: {
-
-  },
+  theme: {},
   // @ts-ignore
   title: false,
   ignoreMomentLocale: true,
-  proxy: proxy[REACT_APP_ENV || 'dev'],
+  proxy: proxy[NODE_ENV || 'development'],
   manifest: {
     basePath: '/',
   },
+  ...require('./router.config'),
   ...require('./Plugins.config'),
 });
