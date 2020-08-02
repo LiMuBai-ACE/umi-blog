@@ -2,7 +2,6 @@ import { defineConfig } from 'umi';
 // import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 const { NODE_ENV } = process.env;
-console.log(NODE_ENV);
 export default defineConfig({
   title: '这是个人网站首页',
   favicon:

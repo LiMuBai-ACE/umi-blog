@@ -8,16 +8,16 @@
 export default {
   development: {
     '/api/': {
-      target: 'https://preview.pro.ant.design',
+      target: 'http://localhost:4000/',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/api': '' },
     },
   },
   production: {
     '/api/': {
-      target: 'your pre url',
+      target: 'http://localhost:4000/',
       changeOrigin: true,
-      pathRewrite: { '^': '' },
+      pathRewrite: { '^/api': '' },
     },
   },
 };
