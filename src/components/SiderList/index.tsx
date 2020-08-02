@@ -3,7 +3,7 @@ import { List } from 'antd';
 import { Link } from 'umi';
 import { EyeOutlined, LikeOutlined } from '@ant-design/icons';
 
-const SiderList = props => {
+const SiderList = (props: any) => {
   const { dataSource, size, split } = props;
   return (
     <List
@@ -11,7 +11,7 @@ const SiderList = props => {
       dataSource={dataSource}
       size={size}
       split={split}
-      renderItem={item => (
+      renderItem={(item: any) => (
         <List.Item
           className="pl-0"
           actions={[

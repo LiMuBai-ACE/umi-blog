@@ -20,7 +20,7 @@ const Tags = props => {
       className="mt-20"
     >
       {tags &&
-        tags.map(tag => (
+        tags.map((tag: any) => (
           <Tag key={tag.en_name} className="mb-10">
             <Link
               to={{
