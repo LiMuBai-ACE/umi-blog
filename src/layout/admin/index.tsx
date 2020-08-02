@@ -11,10 +11,10 @@ const index = (props: any) => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={broken => {
-          console.log(broken, '111');
+          // console.log(broken, '111');
         }}
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type, '2222');
+          // console.log(collapsed, type, '2222');
         }}
       >
         <div className="logo">

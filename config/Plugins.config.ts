@@ -2,7 +2,7 @@
 const path = require('path');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 // vw适配器
-const postcssPx2vw = require('postcss-px-to-viewport');
+// const postcssPx2vw = require('postcss-px-to-viewport');
 const isEnvProduction = process.env.NODE_ENV === 'production';
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const resolve = (dir: any) => path.join(__dirname, dir);

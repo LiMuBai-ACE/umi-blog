@@ -15,7 +15,7 @@ export default {
   },
   production: {
     '/api/': {
-      target: 'http://localhost:4000/',
+      target: 'http://122.51.84.54:4000/',
       changeOrigin: true,
       pathRewrite: { '^/api': '' },
     },

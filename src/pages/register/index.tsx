@@ -9,19 +9,18 @@ import React from 'react';
 import { Button, Row, Form, Input } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'umi';
-// import { connect } from 'dva'
+import { connect } from 'dva';
 
 const Register = (props: any) => {
-  // const { dispatch } = props
+  const { dispatch } = props;
   const [form] = Form.useForm();
   const onFinish = (values: any) => {
-    console.log(values);
-    // if (dispatch) {
-    //     dispatch({
-    //         type: 'user/register',
-    //         payload: values,
-    //     })
-    // }
+    if (dispatch) {
+      dispatch({
+        type: 'login/register',
+        payload: values,
+      });
+    }
   };
   return (
     <>
@@ -59,7 +58,7 @@ const Register = (props: any) => {
               />
             </Form.Item>
             <Form.Item
-              name="repassword"
+              name="confirm"
               rules={[
                 { required: true, message: '请再次输入密码' },
                 ({ getFieldValue }) => ({
@@ -75,7 +74,7 @@ const Register = (props: any) => {
               <Input.Password
                 prefix={<LockOutlined />}
                 type="password"
-                placeholder="请输入你的密码"
+                placeholder="请再次输入你的密码"
               />
             </Form.Item>
             <Form.Item>
@@ -91,8 +90,6 @@ const Register = (props: any) => {
   );
 };
 
-// export default connect(({ user, loading }) => ({
-//   user,
-//   loading,
-// }))(Register)
-export default Register;
+export default connect(({ login }) => ({
+  login,
+}))(Register);

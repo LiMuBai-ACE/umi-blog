@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Button, Row, Form, Input, Checkbox } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'umi';
-// import { connect } from 'dva'
+import { connect } from 'dva';
 
 const Login = (props: any) => {
   const [form] = Form.useForm();
@@ -13,25 +13,25 @@ const Login = (props: any) => {
     }
   }, []);
   const onFinish = (values: any) => {
-    console.log(values);
-    // if (dispatch) {
-    //     dispatch({
-    //         type: 'user/login',
-    //         payload: values,
-    //         callback(res: any) {
-    //             dispatch({
-    //                 type: 'user/account',
-    //                 callback(user: any) {
-    //                     if (location.isRegister) {
-    //                         history.push('/')
-    //                     } else {
-    //                         history.goBack()
-    //                     }
-    //                 },
-    //             })
-    //         },
-    //     })
-    // }
+    // callback  回调 存储登录后返回的信息
+    if (dispatch) {
+      dispatch({
+        type: 'login/login',
+        payload: values,
+        // callback(res: any) {
+        //     dispatch({
+        //         type: 'login/account',
+        //         callback(user: any) {
+        //             if (location.isRegister) {
+        //                 history.push('/')
+        //             } else {
+        //                 history.goBack()
+        //             }
+        //         },
+        //     })
+        // },
+      });
+    }
   };
   return (
     <>
@@ -89,8 +89,5 @@ const Login = (props: any) => {
   );
 };
 
-// export default connect(({ user: { account }, loading }) => ({
-//     account,
-//     loading,
-// }))(Login)
-export default Login;
+export default connect()(Login);
+// export default Login;
