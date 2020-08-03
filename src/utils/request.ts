@@ -61,6 +61,7 @@ const errorHandler = (error: {
  */
 const request = extend({
   errorHandler, // 默认错误处理
+  credentials: 'include', // 默认请求是否带上cookie
 });
 
 // request拦截器, 改变url 或 options.
@@ -70,12 +71,13 @@ request.interceptors.request.use((url, options) => {
     url: `${baseUrl}${url}`,
     options: {
       ...options,
+      withCredentials: true,
     },
   };
 });
 
 // response拦截器, 处理response
-request.interceptors.response.use(async response => {
+request.interceptors.response.use(async (response) => {
   return response;
 });
 

@@ -54,3 +54,7 @@ export default {
 }
 在页面中使用
 console.log(process.env.apiUrl);
+
+```
+打包文件配置版本号 避免缓存
+https://www.jianshu.com/p/20fc868d43cc
