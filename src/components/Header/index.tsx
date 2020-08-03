@@ -37,7 +37,7 @@ const tabs = [
 // const categories = null
 
 const MainHeader = (props: any) => {
-  const { dispatch, categories, account, pathname } = props;
+  const { dispatch, categories, loginInfo, loginToken, pathname } = props;
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -54,7 +54,10 @@ const MainHeader = (props: any) => {
   };
   const logout = () => {
     if (dispatch) {
-      dispatch({ type: 'login/logout' });
+      dispatch({
+        type: 'login/logout',
+        payload: { token: loginToken },
+      });
     }
   };
   const handleClick = () => {};
@@ -100,7 +103,7 @@ const MainHeader = (props: any) => {
               selectedKeys={[pathname]}
             >
               {tabs &&
-                tabs.map(item => (
+                tabs.map((item) => (
                   <Menu.Item key="/home">
                     <Link
                       to={{
@@ -156,11 +159,11 @@ const MainHeader = (props: any) => {
             <Button type="link" onClick={showDrawer}>
               <MenuOutlined />
             </Button>
-            {account && account.usernam && <span>柒叶</span>}
+            {loginInfo && loginInfo.usernam && <span>柒叶</span>}
           </div>
         </div>
         <div className="homeHeaderRight">
-          {account && account.email && account.user_id ? (
+          {loginInfo && loginInfo.email && loginInfo.user_id ? (
             <Dropdown
               overlay={
                 <Menu>
@@ -191,9 +194,9 @@ const MainHeader = (props: any) => {
             >
               <a
                 className="ant-dropdown-link"
-                onClick={e => e.preventDefault()}
+                onClick={(e) => e.preventDefault()}
               >
-                <UserAvatar src={account.avatar} size="large" />
+                <UserAvatar src={loginInfo.avatar} size="large" />
               </a>
             </Dropdown>
           ) : (
@@ -240,7 +243,7 @@ const MainHeader = (props: any) => {
           mode="inline"
         >
           {tabs &&
-            tabs.map(item => (
+            tabs.map((item) => (
               <Menu.Item key={item.key}>
                 <Link
                   to={{
@@ -302,6 +305,7 @@ const MainHeader = (props: any) => {
 //   }
 // }   和下面写法一样
 
-export default connect(({ login: { account } }: any) => ({
-  account,
+export default connect(({ login: { loginInfo, loginToken } }: any) => ({
+  loginInfo,
+  loginToken,
 }))(MainHeader);

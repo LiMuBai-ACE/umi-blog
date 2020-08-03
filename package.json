@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
+    "@types/node": "^14.0.27",
     "@umijs/plugin-esbuild": "^1.0.0-beta.2",
     "@umijs/plugin-sass": "^1.1.1",
     "@umijs/preset-react": "^1.5.19",
@@ -36,6 +37,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "react-cookies": "^0.1.1",
     "react-dom": "^16.13.1",
     "sass-loader": "^9.0.2",
     "umi": "^3.2.14",

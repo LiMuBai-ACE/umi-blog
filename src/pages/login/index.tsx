@@ -6,9 +6,9 @@ import { connect } from 'dva';
 
 const Login = (props: any) => {
   const [form] = Form.useForm();
-  const { dispatch, history, location, account } = props;
+  const { dispatch, history, location, loginInfo } = props;
   useEffect(() => {
-    if (account && account.id) {
+    if (loginInfo && loginInfo.id) {
       history.push('/');
     }
   }, []);
@@ -18,18 +18,6 @@ const Login = (props: any) => {
       dispatch({
         type: 'login/login',
         payload: values,
-        // callback(res: any) {
-        //     dispatch({
-        //         type: 'login/account',
-        //         callback(user: any) {
-        //             if (location.isRegister) {
-        //                 history.push('/')
-        //             } else {
-        //                 history.goBack()
-        //             }
-        //         },
-        //     })
-        // },
       });
     }
   };
@@ -89,5 +77,8 @@ const Login = (props: any) => {
   );
 };
 
-export default connect()(Login);
+export default connect(({ login: { loginInfo, loginToken } }: any) => ({
+  loginInfo,
+  loginToken,
+}))(Login);
 // export default Login;

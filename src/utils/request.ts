@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import { message, notification } from 'antd';
+import Header from '@/components/Header';
 const { NODE_ENV } = process.env;
 const baseUrl =
   NODE_ENV === 'development'
@@ -65,19 +66,19 @@ const request = extend({
 });
 
 // request拦截器, 改变url 或 options.
-request.interceptors.request.use((url, options) => {
+request.interceptors.request.use((url: any, options: any) => {
   console.log(url, options);
+  options.Headers = {
+    'Content-Type': 'application/json; charset=utf-8',
+  };
   return {
     url: `${baseUrl}${url}`,
-    options: {
-      ...options,
-      withCredentials: true,
-    },
+    options,
   };
 });
 
 // response拦截器, 处理response
-request.interceptors.response.use(async (response) => {
+request.interceptors.response.use(async (response: any) => {
   return response;
 });
 
