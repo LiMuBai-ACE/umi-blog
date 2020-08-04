@@ -21,6 +21,6 @@ export async function userLogin(data: any) {
 export async function logout(data?: any) {
   return request('/login/logout', {
     method: 'GET',
-    params: data,
+    data,
   });
 }

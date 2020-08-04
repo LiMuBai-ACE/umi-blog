@@ -32,7 +32,7 @@ export default {
           type: 'setInfo',
           payload: {
             loginInfo: response.data,
-            loginToken: response.data,
+            loginToken: response.token,
           },
         });
         let inFifteenMinutes = new Date(

@@ -68,9 +68,6 @@ const request = extend({
 // request拦截器, 改变url 或 options.
 request.interceptors.request.use((url: any, options: any) => {
   console.log(url, options);
-  options.Headers = {
-    'Content-Type': 'application/json; charset=utf-8',
-  };
   return {
     url: `${baseUrl}${url}`,
     options,

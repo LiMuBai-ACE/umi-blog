@@ -41,6 +41,7 @@ const MainHeader = (props: any) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    console.log(props);
     // if (dispatch) {
     //   dispatch({ type: 'article/categories' })
     // }
