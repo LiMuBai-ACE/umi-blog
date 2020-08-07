@@ -34,13 +34,25 @@ module.exports = {
       path: '/admin',
       name: '管理中心',
       component: '@/layout/admin',
-      exact: true,
+      // exact: true,
       routes: [
         {
           // exact: true,
           path: '/admin',
-          name: '模板页面',
+          name: '个人中心',
           component: '@/pages/accout',
+        },
+        {
+          // exact: true,
+          path: '/admin/writeArticle',
+          name: '编写文章',
+          component: '@/pages/writeArticle',
+        },
+        {
+          // exact: true,
+          path: '/admin/articleList',
+          name: '文章列表',
+          component: '@/pages/articleList',
         },
       ],
     },
