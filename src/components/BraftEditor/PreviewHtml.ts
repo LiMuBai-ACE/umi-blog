@@ -1,4 +1,6 @@
 import BraftEditor from 'braft-editor';
+// 预览
+
 export const buildPreviewHtml = (content: any) => {
   return `
       <!Doctype html>

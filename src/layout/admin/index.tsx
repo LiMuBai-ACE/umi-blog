@@ -45,10 +45,10 @@ const index = (props: any) => {
         >
           height
         </Header>
-        <Content style={{ margin: '24px 16px 0' }}>
+        <Content style={{ padding: 30 }}>
           <div
             className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
+            // style={{ padding: 24, minHeight: 360 }}
           >
             {props.children}
           </div>

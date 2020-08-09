@@ -1,82 +1,37 @@
 import React, { useState } from 'react';
 import {} from 'umi';
-import BraftEditor from 'braft-editor';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { connect } from 'dva';
+import { Form, Input, Button, message } from 'antd';
+import BraftEditor from '@/components/BraftEditor';
+import myContext from '@/utils/createContext';
 import './index.scss';
-import 'braft-editor/dist/index.css';
-import { buildPreviewHtml } from './PreviewHtml';
-import 'braft-extensions/dist/code-highlighter.css';
-import CodeHighlighter from 'braft-extensions/dist/code-highlighter';
-BraftEditor.use(
-  CodeHighlighter({
-    includeEditors: ['editor-with-code-highlighter'],
-  }),
-);
-
-// 写文章
-const controls: any = [
-  'bold',
-  'italic',
-  'underline',
-  'text-color',
-  'separator',
-  'link',
-  'separator',
-  'media',
-];
 
 const layout = {
-  labelCol: { span: 8 },
+  // labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
+function WriteArticle(props: any) {
+  const [content, SetContent] = useState(null);
+  const { dispatch, history, location, loginInfo } = props;
 
-const excludeControls: Array<any> = [
-  'letter-spacing',
-  'line-height',
-  'clear',
-  'headings',
-  'list-ol',
-  'list-ul',
-  'remove-styles',
-  'superscript',
-  'subscript',
-  'hr',
-  'text-align',
-];
-// 预览按钮
-
-function WriteArticle() {
-  const [contnent, SetContent] = useState(null);
-
-  // 打开新页面 预览
-  const preview = () => {
-    if (window.previewWindow) {
-      window.previewWindow.close();
-    }
-    window.previewWindow = window.open();
-    window.previewWindow.document.write(buildPreviewHtml(contnent));
-    window.previewWindow.document.close();
+  // 上传文章
+  const onFinish = (values: any) => {
+    dispatch({
+      type: 'admin/writeArticle',
+      payload: {
+        ...values,
+        content,
+        user_id: loginInfo.user_id,
+      },
+    });
   };
-
-  // 预览按钮
-  const extendControls: Array<any> = [
-    {
-      key: 'custom-button',
-      type: 'button',
-      text: '预览',
-      onClick: preview,
-    },
-  ];
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
 
   return (
     <div className="demo-container">
@@ -88,35 +43,26 @@ function WriteArticle() {
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          label="标题"
+          name="title"
+          rules={[{ required: true, message: '请输入你的标题！' }]}
         >
-          <Input />
+          <Input placeholder="请输入你的标题！" />
         </Form.Item>
 
         <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          label="介绍"
+          name="profile"
+          rules={[{ required: true, message: '请输入你的介绍！' }]}
         >
-          <Input.Password />
+          <Input placeholder="请输入你的介绍！" />
         </Form.Item>
-        <BraftEditor
-          className="my-editor"
-          onChange={(e) => SetContent(e)}
-          excludeControls={excludeControls}
-          extendControls={extendControls}
-          // controls={controls}
-          placeholder="请输入正文内容"
-        />
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
+        <myContext.Provider value={{ content, SetContent }}>
+          <BraftEditor />
+        </myContext.Provider>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
-            Submit
+            提交
           </Button>
         </Form.Item>
       </Form>
@@ -124,4 +70,7 @@ function WriteArticle() {
   );
 }
 
-export default WriteArticle;
+export default connect(({ login: { loginInfo, loginToken } }: any) => ({
+  loginInfo,
+  loginToken,
+}))(WriteArticle);

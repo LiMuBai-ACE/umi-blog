@@ -2,7 +2,7 @@ import { message } from 'antd';
 import { history } from 'umi';
 import cookie from 'react-cookies';
 import StorageHelper from '@/utils/storage';
-import * as LoginApi from '@/services/login';
+import API from '@/services/index';
 
 export default {
   namespace: 'login',
@@ -13,7 +13,7 @@ export default {
   effects: {
     // 注册
     *register({ payload }: any, { call }: any) {
-      const response = yield call(LoginApi.userRegister, payload);
+      const response = yield call(API.userRegister, payload);
       if (response.code === 200) {
         message.success('注册成功');
         history.push({ pathname: '/login' });
@@ -24,7 +24,7 @@ export default {
 
     // 登录
     *login({ payload }: any, { call, put }: any) {
-      const response = yield call(LoginApi.userLogin, payload);
+      const response = yield call(API.userLogin, payload);
       if (response.code === 200) {
         message.warn(response.msg);
         // 登录成功后需要改变用户信息 不然无法立即获取
@@ -48,7 +48,7 @@ export default {
 
     // 退出登录
     *logout({ payload }: any, { call, put }: any) {
-      const response = yield call(LoginApi.logout, payload);
+      const response = yield call(API.logout, payload);
       if (response.code === 200) {
         message.warn(response.msg);
         StorageHelper.clear();
