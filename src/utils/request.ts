@@ -66,7 +66,7 @@ const request = extend({
 
 // request拦截器, 改变url 或 options.
 request.interceptors.request.use((url: any, options: any) => {
-  console.log(url, options);
+  // console.log(url, options);
   return {
     url: `${baseUrl}${url}`,
     options,

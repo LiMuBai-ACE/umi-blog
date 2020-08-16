@@ -18,9 +18,9 @@ export async function userLogin(data: any) {
 }
 
 // 用户推出登录
-export async function logout(data?: any) {
+export async function logout() {
   return request('/login/logout', {
     method: 'GET',
-    data,
+    // data,
   });
 }

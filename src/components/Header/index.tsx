@@ -57,7 +57,7 @@ const MainHeader = (props: any) => {
     if (dispatch) {
       dispatch({
         type: 'login/logout',
-        payload: { token: loginToken },
+        // payload: { token: loginToken },
       });
     }
   };

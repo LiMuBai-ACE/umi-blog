@@ -48,7 +48,7 @@ export default {
 
     // 退出登录
     *logout({ payload }: any, { call, put }: any) {
-      const response = yield call(API.logout, payload);
+      const response = yield call(API.logout);
       if (response.code === 200) {
         message.warn(response.msg);
         StorageHelper.clear();
