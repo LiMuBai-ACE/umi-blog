@@ -35,6 +35,8 @@
     "crypto-js": "^4.0.0",
     "draft-js-prism": "^1.0.6",
     "dva": "^2.4.1",
+    "dva-core": "^2.0.2",
+    "dva-loading": "^3.0.20",
     "lint-staged": "^10.2.11",
     "node-sass": "^4.14.1",
     "postcss-px-to-viewport": "^1.1.1",
