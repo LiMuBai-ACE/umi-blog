@@ -4,7 +4,6 @@
  */
 import { extend } from 'umi-request';
 import { message, notification } from 'antd';
-import Header from '@/components/Header';
 const { NODE_ENV } = process.env;
 const baseUrl =
   NODE_ENV === 'development'
