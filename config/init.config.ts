@@ -15,9 +15,6 @@ module.exports = {
     immer: true, // 表示是否启用 immer 以方便修改 reducer
     hmr: true, // 表示是否启用 dva model 的热更新
   },
-  dynamicImport: {
-    // loading: '@/components/loading',
-  },
   targets: {
     ie: 11,
   },
@@ -26,4 +23,10 @@ module.exports = {
   },
   theme: {},
   ignoreMomentLocale: true,
+  // 预渲染配置
+  // history: { type: 'browser' },
+  // ssr: {},
+  // exportStatic: {
+  //     // 预渲染动态路由：默认情况下，预渲染不会渲染动态路由里的所有页面，如果需要渲染动态路由中的页面，可通过配置 `extraRoutePaths`
+  // },
 };

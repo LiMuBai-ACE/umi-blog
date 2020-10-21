@@ -15,3 +15,10 @@ export async function ArticleList(data: any) {
     data,
   });
 }
+// 文章详情
+export async function ArticleDetail(data: any) {
+  return request('/admin/articles/detail', {
+    method: 'POST',
+    data,
+  });
+}

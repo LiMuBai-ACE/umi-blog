@@ -3,15 +3,16 @@ module.exports = {
     {
       path: '/',
       redirect: '/home',
+      exact: true,
     },
     {
       path: '/home',
       name: '首页',
       component: '@/layout/home',
-      // exact: true,
+      exact: true,
       routes: [
         {
-          // exact: true,
+          exact: true,
           path: '/home',
           name: '首页',
           component: '@/pages/home',
@@ -34,7 +35,6 @@ module.exports = {
       path: '/admin',
       name: '管理中心',
       component: '@/layout/admin',
-      // exact: true,
       routes: [
         {
           // exact: true,
@@ -53,6 +53,12 @@ module.exports = {
           path: '/admin/articleList',
           name: '文章列表',
           component: '@/pages/articleList',
+        },
+        {
+          // exact: true,
+          path: '/admin/articleList/detail',
+          name: '文章详情',
+          component: '@/pages/articleList/detail',
         },
       ],
     },

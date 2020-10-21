@@ -23,7 +23,7 @@ const index = (props: any) => {
         </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
-            <Link to="/home">首页</Link>
+            <Link to="/admin">首页</Link>
           </Menu.Item>
           <SubMenu key="sub2" title="文章管理">
             <Menu.Item key="2">

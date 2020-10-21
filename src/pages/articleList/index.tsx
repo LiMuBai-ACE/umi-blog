@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import {} from 'umi';
+import React, { useEffect, useState } from 'react';
+import { history } from 'umi';
 import { connect } from 'dva';
-import { Table, Tag, Space } from 'antd';
+import { Table, Space } from 'antd';
 import './index.scss';
 // 文章列表
 
@@ -9,27 +9,32 @@ const columns = [
   {
     title: '标题',
     dataIndex: 'title',
-    key: 'id',
-    render: (text: any) => {
-      return <a>{text}</a>;
+    render: (text: any, record: any) => {
+      // console.log(record)
+      return (
+        <a
+          onClick={() =>
+            history.push(`/admin/articleList/detail?id=${record.id}`)
+          }
+        >
+          {text}
+        </a>
+      );
     },
   },
   {
     title: '简介',
     dataIndex: 'profile',
-    key: 'id',
   },
   {
     title: '创建时间',
     dataIndex: 'create_time',
-    key: 'id',
   },
   {
     title: '操作',
-    key: 'id',
     render: () => (
       <Space size="middle">
-        <a>Invite {}</a>
+        <a>Invite</a>
         <a>Delete</a>
       </Space>
     ),
@@ -37,10 +42,13 @@ const columns = [
 ];
 
 function ArticleList(props: any) {
-  const { dispatch, articleList } = props;
+  const { dispatch } = props;
+  const [articleList, SetArticleList] = useState([]);
   useEffect(() => {
     dispatch({
       type: 'admin/articleList',
+    }).then((res: any) => {
+      SetArticleList(res.data);
     });
   }, []);
 
@@ -57,6 +65,4 @@ function ArticleList(props: any) {
   );
 }
 
-export default connect(({ admin: { articleList } }: any) => ({
-  articleList,
-}))(ArticleList);
+export default connect(({ admin: {} }: any) => ({}))(ArticleList);

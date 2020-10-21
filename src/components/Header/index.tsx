@@ -183,7 +183,7 @@ const MainHeader = (props: any) => {
                     <Link to="/admin">管理中心</Link>
                   </Menu.Item>
                   <Menu.Item key="user-center-key">
-                    <Link to="/admin/account">个人中心</Link>
+                    <Link to="/admin">个人中心</Link>
                   </Menu.Item>
                   <Menu.Divider />
                   <Menu.Item key="logout-key" onClick={logout}>

@@ -4,9 +4,7 @@ import API from '@/services/index';
 
 export default {
   namespace: 'admin',
-  state: {
-    articleList: [],
-  },
+  state: {},
   effects: {
     // 上传文章
     *writeArticle({ payload }: any, { call, put }: any) {
@@ -22,12 +20,16 @@ export default {
     *articleList({ payload }: any, { call, put }: any) {
       const response = yield call(API.ArticleList);
       if (response.code === 200) {
-        yield put({
-          type: 'handle',
-          payload: {
-            articleList: response.data,
-          },
-        });
+        return response;
+      } else {
+        message.warn(response.msg);
+      }
+    },
+    // 文章详情
+    *articleDetail({ payload }: any, { call }: any) {
+      const response = yield call(API.ArticleDetail, payload);
+      if (response.code === 200) {
+        return response;
       } else {
         message.warn(response.msg);
       }
