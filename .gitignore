@@ -9,6 +9,7 @@
 
 # production
 /dist
+/blog-admin
 
 # misc
 .DS_Store

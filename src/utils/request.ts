@@ -8,7 +8,7 @@ const { NODE_ENV } = process.env;
 const baseUrl =
   NODE_ENV === 'development'
     ? 'http://localhost:4000'
-    : 'http://122.51.84.54:4000';
+    : 'http://106.15.63.211:4000';
 
 const codeMessage: any = {
   200: '服务器成功返回请求的数据。',
