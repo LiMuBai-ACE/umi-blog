@@ -1,5 +1,5 @@
 module.exports = {
-  outputPath: '/blog-admin', // 修改打包路径
+  outputPath: '/dist', // 修改打包路径
   antd: {
     dark: false,
   },
