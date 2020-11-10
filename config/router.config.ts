@@ -3,24 +3,6 @@ module.exports = {
     {
       path: '/',
       redirect: '/home',
-      exact: true,
-    },
-    {
-      path: '/home',
-      name: '首页',
-      component: '@/layout/home',
-      exact: true,
-      routes: [
-        {
-          exact: true,
-          path: '/home',
-          name: '首页',
-          component: '@/pages/home',
-        },
-        {
-          component: '@/pages/404',
-        },
-      ],
     },
     {
       path: '/login',
@@ -35,27 +17,46 @@ module.exports = {
       exact: true,
     },
     {
-      name: '管理中心',
-      component: '@/layout/admin/index',
+      path: '/home',
+      component: '@/layout/home',
       routes: [
         {
-          // exact: true,
+          path: '/home',
+          name: '首页',
+          component: '@/pages/home',
+        },
+        {
+          component: '@/layout/404',
+        },
+      ],
+    },
+    // {
+    //     component: '@/layout/auth',
+    //     routes: [
+    {
+      path: '/',
+      component: '@/layout/admin/index/index',
+      routes: [
+        {
           path: '/admin',
           name: '首页',
           component: '@/pages/home',
         },
         {
+          path: '/write',
           name: '文章管理',
           routes: [
             {
-              // exact: true,
-              path: '/admin/writeArticle',
+              path: '/write',
+              redirect: '/write/writeArticle',
+            },
+            {
+              path: '/write/writeArticle',
               name: '编写文章',
               component: '@/pages/writeArticle',
             },
             {
-              // exact: true,
-              path: '/admin/articleList',
+              path: '/write/articleList',
               name: '文章列表',
               component: '@/pages/articleList',
             },
@@ -65,18 +66,28 @@ module.exports = {
             //     name: '文章详情',
             //     component: '@/pages/articleList/detail',
             // },
+            {
+              component: '@/layout/404',
+            },
           ],
         },
         {
-          exact: true,
-          path: '/admin/accout',
+          path: '/accout',
           name: '个人中心',
           component: '@/pages/accout',
         },
+        {
+          component: '@/layout/404',
+        },
       ],
     },
+    //         {
+    //             component: '@/layout/404',
+    //         },
+    //     ],
+    // },
     {
-      component: '@/pages/404',
+      component: '@/layout/404',
     },
   ],
 };
