@@ -18,6 +18,7 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
+    
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
