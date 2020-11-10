@@ -54,6 +54,7 @@ const Sidebar: FC = (props: any) => {
   // 便利侧边栏
   function MapRoute(route: any, name?: string) {
     if (route.routes && route.routes.length > 0) {
+      if (!route.name) return;
       return (
         <SubMenu
           key={route.name}
@@ -69,6 +70,7 @@ const Sidebar: FC = (props: any) => {
         </SubMenu>
       );
     } else {
+      if (!route.name) return;
       return (
         <Menu.Item
           onClick={() => {

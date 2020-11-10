@@ -6,9 +6,9 @@ import { connect } from 'dva';
 
 const Login = (props: any) => {
   const [form] = Form.useForm();
-  const { dispatch, history, location, loginInfo } = props;
+  const { dispatch, history, location, loginInfo, loginToken } = props;
   useEffect(() => {
-    if (loginInfo && loginInfo.id) {
+    if (loginInfo && loginInfo.user_id && loginToken) {
       history.push('/');
     }
   }, []);
@@ -81,4 +81,3 @@ export default connect(({ login: { loginInfo, loginToken } }: any) => ({
   loginInfo,
   loginToken,
 }))(Login);
-// export default Login;
