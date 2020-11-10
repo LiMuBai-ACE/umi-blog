@@ -17,6 +17,9 @@ module.exports = {
           name: '首页',
           component: '@/pages/home',
         },
+        {
+          component: '@/pages/404',
+        },
       ],
     },
     {
@@ -32,35 +35,48 @@ module.exports = {
       exact: true,
     },
     {
-      path: '/admin',
       name: '管理中心',
-      component: '@/layout/admin',
+      component: '@/layout/admin/index',
       routes: [
         {
           // exact: true,
           path: '/admin',
+          name: '首页',
+          component: '@/pages/home',
+        },
+        {
+          name: '文章管理',
+          routes: [
+            {
+              // exact: true,
+              path: '/admin/writeArticle',
+              name: '编写文章',
+              component: '@/pages/writeArticle',
+            },
+            {
+              // exact: true,
+              path: '/admin/articleList',
+              name: '文章列表',
+              component: '@/pages/articleList',
+            },
+            // {
+            //     // exact: true,
+            //     path: '/admin/articleList/detail',
+            //     name: '文章详情',
+            //     component: '@/pages/articleList/detail',
+            // },
+          ],
+        },
+        {
+          exact: true,
+          path: '/admin/accout',
           name: '个人中心',
           component: '@/pages/accout',
         },
-        {
-          // exact: true,
-          path: '/admin/writeArticle',
-          name: '编写文章',
-          component: '@/pages/writeArticle',
-        },
-        {
-          // exact: true,
-          path: '/admin/articleList',
-          name: '文章列表',
-          component: '@/pages/articleList',
-        },
-        {
-          // exact: true,
-          path: '/admin/articleList/detail',
-          name: '文章详情',
-          component: '@/pages/articleList/detail',
-        },
       ],
+    },
+    {
+      component: '@/pages/404',
     },
   ],
 };

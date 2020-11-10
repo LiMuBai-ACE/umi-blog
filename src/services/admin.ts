@@ -10,7 +10,7 @@ export async function adminArticle(data: any) {
 }
 // 文章列表
 export async function ArticleList(data: any) {
-  return request('/admin/articles/list', {
+  return await request('/admin/articles/list', {
     method: 'GET',
     data,
   });

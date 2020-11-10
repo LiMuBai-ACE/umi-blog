@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import { message, notification } from 'antd';
+import cookie from 'react-cookies';
 const { NODE_ENV } = process.env;
 const baseUrl =
   NODE_ENV === 'development'
@@ -66,10 +67,16 @@ const request = extend({
 
 // request拦截器, 改变url 或 options.
 request.interceptors.request.use((url: any, options: any) => {
-  const headers = {
+  let headers: object = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   };
+  if (cookie.load('token')) {
+    headers = {
+      ...headers,
+      token: String(cookie.load('token')),
+    };
+  }
   return {
     url: `${baseUrl}${url}`,
     options: { ...options, headers },
